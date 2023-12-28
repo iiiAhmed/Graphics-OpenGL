@@ -32,7 +32,7 @@ namespace Graphics
         int ShaderViewMatrixID;
         int ShaderProjectionMatrixID;
 
-        const float rotationSpeed = 4f;
+        const float rotationSpeed = 0f;
         float rotationAngle = 0;
 
         public float translationX=0, 
@@ -48,7 +48,7 @@ namespace Graphics
             string projectPath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
             sh = new Shader(projectPath + "\\Shaders\\SimpleVertexShader.vertexshader", projectPath + "\\Shaders\\SimpleFragmentShader.fragmentshader");
 
-            Gl.glClearColor(0, 0, 0.4f, 1);
+            Gl.glClearColor(0.1f, 0, 0f, 1);
             
             float[] verts= { 
 		        // 1face
@@ -340,14 +340,30 @@ namespace Graphics
 
             rotationAngle += deltaTime * rotationSpeed;
 
-            float translationSpeed = 1f;
+            float translationSpeed = 0.7f;
             
             
-            
-            if (translationX < 5f)
+            if (translationX < 2f)
             {
                 translationX += deltaTime * translationSpeed;
             }
+            else
+            {
+                translationY += deltaTime * translationSpeed;
+                rotationAngle = 1.5f;
+
+                if (translationY < 1.5f)
+                {
+                    translationY += deltaTime * translationSpeed;
+                }
+            }
+
+            if (translationY > 2.7f)
+            {
+                translationX = 0;
+                translationY = 0;
+                rotationAngle = 0;
+;            }
 
 
 
