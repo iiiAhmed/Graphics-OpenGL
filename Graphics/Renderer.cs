@@ -283,8 +283,8 @@ namespace Graphics
             Gl.glEnableVertexAttribArray(0);
             Gl.glEnableVertexAttribArray(1);
 
-            Gl.glVertexAttribPointer(0, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 6 * sizeof(float), (IntPtr)0);
-            Gl.glVertexAttribPointer(1, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 6 * sizeof(float), (IntPtr)(3 * sizeof(float)));
+            Gl.glVertexAttribPointer(0, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 6 * sizeof(float), (IntPtr)0); // points pointer
+            Gl.glVertexAttribPointer(1, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 6 * sizeof(float), (IntPtr)(3 * sizeof(float))); // color pointer
 
             // 1. face
             Gl.glDrawArrays(Gl.GL_POLYGON, 0, 7);
